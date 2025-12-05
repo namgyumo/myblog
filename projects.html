@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        pre {
+            background-color: #000000d8;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, "Liberation Mono", Courier, monospace;
+            color: #f8f8f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center">Projects</h1>
+    <br />
+    <div width="80%">
+        <h3 align="center">project 1: Make merge sort function</h3>
+        <a href="https://github.com/namgyumo/Data-structure-practice" target="_parent"><h4 align="center">link github</h4></a>
+        <pre><code>
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+void merge(long long arr[], long long left, long long mid, long long right) {//병합하기
+	long long min = left, max = mid+1,i = 0;
+	long long* bupper = (long long*)malloc(sizeof(long long) * (right - left + 1));
+	while (min <= mid && max <= right) {
+		if (arr[min] <= arr[max]) {
+			bupper[i++] = arr[min++];
+		}
+		else {
+			bupper[i++] = arr[max++];
+		}
+	}
+	while (min <= mid) {//남은 원소 넣기
+		bupper[i] = arr[min];
+		min++;
+		i++;
+	}
+	while (max <= right) {
+		bupper[i] = arr[max];
+		max++;
+		i++;
+	}
+	for (long long i = 0,j = left; i < right - left + 1; i++,j++) {//원본에 삽입
+		arr[j] = bupper[i];
+	}
+	free(bupper);
+}
+
+void merge_sort(long long arr[], long long left,long long right) {//분할하기
+	if (left >= right)return;
+	long long mid = (left + right) / 2;
+	merge_sort(arr, left, mid);
+	merge_sort(arr, mid + 1, right);
+	merge(arr, left, mid, right);
+}
+
+int main() {
+	int TIME = 0;
+
+	long long input;
+	srand(time(NULL));
+	scanf("%lld", &input);
+	/* Timer on */
+	clock_t start = clock();
+	long long* arr = (long long*)malloc(sizeof(long long) * input);
+	for (long long i = 0; i < input; i++) {
+		arr[i] = rand() % (input * 2);
+	}
+	merge_sort(arr, 0, input - 1);
+	/*for (long long i = 0; i < input; i++) {
+		printf("%d ", arr[i]);
+		if (i != 0 && i % 20 == 0) {
+			printf("\n");
+		}
+	}*/
+	/* Timer off */
+	TIME += ((int)clock() - start) / (CLOCKS_PER_SEC / 1000);
+
+	printf("TIME : %d ms\n", TIME); /* ms 단위로 출력 */
+
+}
+            </code></pre>
+    </div>
+    <br/>
+    <div>
+        <h3 align="center">project 2: Backjoon solve</h3>
+        <a href="https://github.com/namgyumo/Backjoon" target="_parent"><h4 align="center">link github</h4></a>
+        <pre><code>
+//backjoon 2606
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+
+typedef struct AbjNode {
+	int data;
+	struct AbjNode* Next;
+}AbjNode;
+
+typedef struct Node {
+	int data;
+	struct Node* Next;
+	AbjNode* abj;
+}Node;
+
+Node* MakeNode(int data) {
+	Node* node = (Node*)malloc(sizeof(Node));
+	node->data = data;
+	node->Next = NULL;
+	node->abj = NULL;
+	return  node;
+}
+
+void InsertNode(Node** head, int data) {
+	if (*head == NULL) {
+		*head = MakeNode(data);
+		return;
+	}
+	Node* temp = *head;
+	while (temp->Next != NULL) {
+		temp = temp->Next;
+	}
+	temp->Next = MakeNode(data);
+}
+
+Node* FindNode(Node* head, int data) {
+	Node* temp = head;
+	while (temp != NULL) {
+		if (temp->data == data) {
+			return temp;
+		}
+		temp = temp->Next;
+	}
+	return NULL;
+}
+
+void AbjLink(Node* head, int first_data, int second_data) {
+	Node* first = FindNode(head, first_data);
+	Node* second = FindNode(head, second_data);
+	if (first == NULL || second == NULL) return;
+	AbjNode* first_abj = (AbjNode*)malloc(sizeof(AbjNode));
+	first_abj->data = second_data;
+	first_abj->Next = first->abj;
+	first->abj = first_abj;
+	AbjNode* second_abj = (AbjNode*)malloc(sizeof(AbjNode));
+	second_abj->data = first_data;
+	second_abj->Next = second->abj;
+	second->abj = second_abj;
+}
+
+void Dfs(Node* head, int start_data, bool visited[], int* count) {
+	Node* temp = FindNode(head, start_data);
+	if (temp == NULL) return;
+
+	visited[start_data - 1] = true;
+	(*count)++;
+
+	AbjNode* cur = temp->abj;
+	while (cur != NULL) {
+		if (!visited[cur->data - 1]) {
+			Dfs(head, cur->data, visited, count);
+		}
+		cur = cur->Next;
+	}
+}
+
+int main() {
+	int input,num,count = 0;
+	Node* head = NULL;
+	scanf("%d", &input);
+	bool visited[100] = { false };
+	for (int i = 0; i < input; i++) {
+		InsertNode(&head, i + 1);
+	}
+	scanf("%d", &num);
+	for (int i = 0; i < num; i++) {
+		int first_data, secnod_data;
+		scanf("%d %d", &first_data, &secnod_data);
+		AbjLink(head, first_data, secnod_data);
+	}
+	Dfs(head, 1, visited, &count);
+	printf("%d", count-1);
+}
+            </code></pre>
+    </div>
+</body>
+
+</html>
