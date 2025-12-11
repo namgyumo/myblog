@@ -36,15 +36,36 @@
             text-decoration: none;
             font-weight: bold;
             color: black;
+            padding: 5px 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            display: inline-block;
+            transition: margin 0.3s ease, color 0.5s ease, background-color 0.6s ease, padding 0.6s ease;
         }
 
         nav ul li a:hover {
-            color: gray;
+            margin-left: 40px;
+            margin-right: 20px;
+            padding: 6px 25px;
+            background-color: black;
+            color: white;
+            transition: margin 0.3s ease, color 0.5s ease, background-color 0.6s ease, padding 0.6s ease;
+        }
+
+        nav ul li a:active {
+            background-color: gray;
+            color: white;
+            padding: 4px 15px;
+            transition: padding 0.1s ease;
+            outline: none;
+            border: 2px solid;
+            animation: rainbow-border 2s infinite;
         }
 
         .nav {
             margin-top: 10px;
             margin-bottom: 10px;
+            background-color: white;
         }
 
         .table {
@@ -55,8 +76,34 @@
             width: 100%;
             min-height: 400px;
             border: none;
-            overflow: hidden;
+            overflow: scroll;
         }
+
+        @keyframes rainbow-border {
+            0% {
+                border-color: #ff0000;
+            }
+            16% {
+                border-color: #ff7f00;
+            }
+            33% {
+                border-color: #ffff00;
+            }
+            50% {
+                border-color: #00ff00;
+            }
+            66% {
+                border-color: #0000ff;
+            }
+            83% {
+                border-color: #4b0082;
+            }
+
+            100% {
+                border-color: #ff0000;
+            }
+        }
+
         select {
             width: 80%;
             padding: 5px;
@@ -66,7 +113,14 @@
             text-align: center;
             margin-bottom: 10px;
         }
-        .input{
+
+        select:focus {
+            outline: none;
+            border: 2px solid;
+            animation: rainbow-border 2s infinite;
+        }
+
+        .input {
             width: 80%;
             padding: 5px;
             font-size: 16px;
@@ -74,6 +128,54 @@
             border: 1px solid #ccc;
             text-align: center;
             margin-bottom: 10px;
+        }
+
+        .input:focus {
+            outline: none;
+            border: 2px solid;
+            animation: rainbow-border 2s infinite;
+        }
+
+        .button {
+            width: 40%;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .button:hover {
+            background-color: lightgray;
+            cursor: pointer;
+        }
+
+        .button:active {
+            background-color: gray;
+            color: white;
+            outline: none;
+            border: 2px solid;
+            animation: rainbow-border 2s infinite;
+        }
+
+        .img {
+            border-radius: 20px;
+            margin-top: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .img:hover {
+            box-shadow: 0 0 10px gray;
+            cursor: pointer;
+            transform: scale(1.1);
+            transition: transform 0.5s ease;
+        }
+
+        .img:active {
+            box-shadow: 0 0 5px darkgray;
+            transform: scale(0.9);
+            transition: transform 0.1s ease;
         }
     </style>
 </head>
@@ -84,6 +186,9 @@
             <td>
                 <header>
                     <h1 align="center">남규모의 블로그</h1>
+                    <div align="center" id="welcome">
+                        <h5>Welcome to NAM-GYUMO's Blog!</h5>
+                    </div>
                 </header>
             </td>
         </tr>
@@ -93,10 +198,10 @@
             <td colspan="3" align="right">
                 <nav>
                     <ul>
-                        <li><a href="main.html" target="Mainframe">| Home |</a></li>
-                        <li><a href="about.html" target="Mainframe">| About Me |</a></li>
-                        <li><a href="projects.html" target="Mainframe">| Projects |</a></li>
-                        <li><a href="contact.html" target="Mainframe">| Contact |</a></li>
+                        <li><a href="main.html" target="Mainframe">Home</a></li>
+                        <li><a href="about.html" target="Mainframe">About Me</a></li>
+                        <li><a href="projects.html" target="Mainframe">Projects</a></li>
+                        <li><a href="contact.html" target="Mainframe">Contact</a></li>
                     </ul>
                 </nav>
             </td>
@@ -104,10 +209,14 @@
 
         <tr valign="top">
             <td width="15%">
-                <aside>
-                    aside 1
-                    <img src="poby.jpg" width="80%" align="center" height="auto"
-                        style="border-radius: 20px; margin-top: 10px;" />
+                <aside align="center">
+                    <h3 align="center">이름을 입력해주세요</h3>
+                    <div style="text-align: center;">
+                        <input type="text" id="nameInput" placeholder="이름 입력" class="input" />
+                        <button onclick="greetUser()" class="button">입력 완료</button>
+                    </div>
+
+                    <img src="poby.jpg" width="80%" align="center" height="auto" class="img" title="우리집 강아지" />
                     <br /><br />
                     <h5>NAME: NAM-GYUMO</h5>
                     <h5>UNIVERSITY: DONG-EUI UNIVERSITY</h5>
@@ -117,6 +226,18 @@
                     <h5>MY GITHUB: <a href="https://github.com/namgyumo"><img
                                 src="https://i.namu.wiki/i/nJLEdQCIL5c8XMh7dYQW-bcX8BkLqKZGw0R2fOMDX2IKQadQAWZipD2OeV7158IXJo1eVcy4XiCOTiKvjtsESg.webp"
                                 width="30px" height="auto">namgyumo</a></h5>
+
+                    <script>
+                        function greetUser() {
+                            let name = document.getElementById("nameInput").value;
+                            wellcome = document.getElementById("welcome");
+                            if (name == "" || name == null) {
+                                wellcome.innerHTML = `<h5>Welcome to NAM-GYUMO's Blog!</h5>`;
+                                return;
+                            }
+                            wellcome.innerHTML = `<h5>Hi ${name}!!&nbsp&nbsp  Welcome to NAM-GYUMO's Blog!</h5>`;
+                        }
+                    </script>
                 </aside>
             </td>
 
@@ -128,13 +249,13 @@
             </td>
 
             <td width="15%">
-                <aside>aside 2
+                <aside>
                     <h3 id="date" style="text-align:center;"></h3>
                     <h4 id="time" style="text-align:center;"></h4>
                     <h5 id="mill" style="text-align:center;"></h5>
 
                     <script>
-                        function printTime() {
+                        function printLocalTime() {
                             let today = new Date();
                             let year = today.getFullYear();
                             let month = today.getMonth() + 1;
@@ -144,31 +265,27 @@
                             let sec = today.getSeconds();
                             let mill = today.getMilliseconds();
 
-                            document.getElementById("date").innerText =
-                                `${year}년 ${month}월 ${day}일`;
-
-                            document.getElementById("time").innerText =
-                                `${hour}시 ${min}분 ${sec}초`;
-                            document.getElementById("mill").innerText =
-                                `${mill}밀리초`;
+                            document.getElementById("date").innerText = `${year}년 ${month}월 ${day}일`;
+                            document.getElementById("time").innerText = `${hour}시 ${min}분 ${sec}초`;
+                            document.getElementById("mill").innerText = `${mill}밀리초`;
                         }
 
-                        printTime();
-
-                        setInterval(printTime, 10);
+                        setInterval(printLocalTime, 10); // 0.01초마다 갱신
                     </script>
+
                     <br />
+                    <hr>
                     <h2 align="center">세계 시간대 선택</h2>
                     <div style="text-align: center;">
                         <select id="WorldSelect" align="center">
-                        <option value="America/New_York">뉴욕</option>
-                        <option value="America/Los_Angeles">로스앤젤레스</option>
-                        <option value="Europe/London">런던</option>
-                        <option value="Asia/Tokyo">도쿄</option>
-                        <option value="Australia/Sydney">시드니</option>
-                    </select>
+                            <option value="America/New_York">뉴욕</option>
+                            <option value="America/Los_Angeles">로스앤젤레스</option>
+                            <option value="Europe/London">런던</option>
+                            <option value="Asia/Tokyo">도쿄</option>
+                            <option value="Australia/Sydney">시드니</option>
+                        </select>
                     </div>
-                    <br/>
+                    <br />
                     <h3 id="Wdate" style="text-align:center;"></h3>
                     <h4 id="Wtime" style="text-align:center;"></h4>
                     <h5 id="Wmill" style="text-align:center;"></h5>
@@ -176,49 +293,88 @@
                     <script>
                         const worldSelect = document.getElementById("WorldSelect");
 
-                        function printTime() {
+                        function printWorldTime() {
                             const today = new Date();
                             const timeZone = worldSelect.value;
 
                             const formatter = new Intl.DateTimeFormat('ko-KR', {
                                 timeZone: timeZone,
-                                year: 'numeric',
-                                month: 'numeric',
-                                day: 'numeric',
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                second: '2-digit',
-                                hour12: false // 24시간제
+                                year: 'numeric', month: 'numeric', day: 'numeric',
+                                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                                hour12: false
                             });
 
                             const parts = formatter.formatToParts(today);
-
                             const year = parts.find(p => p.type === 'year').value;
                             const month = parts.find(p => p.type === 'month').value;
                             const day = parts.find(p => p.type === 'day').value;
                             const hour = parts.find(p => p.type === 'hour').value;
                             const min = parts.find(p => p.type === 'minute').value;
                             const sec = parts.find(p => p.type === 'second').value;
-
                             const millis = String(today.getMilliseconds()).padStart(3, '0');
 
-                            document.getElementById("Wdate").innerText = 
-                                `${year}년 ${month}월 ${day}일`;
-                            document.getElementById("Wtime").innerText = 
-                                `${hour}시 ${min}분 ${sec}초`;
-                            document.getElementById("Wmill").innerText = 
-                                `${millis}밀리초`;
+                            document.getElementById("Wdate").innerText = `${year}년 ${month}월 ${day}일`;
+                            document.getElementById("Wtime").innerText = `${hour}시 ${min}분 ${sec}초`;
+                            document.getElementById("Wmill").innerText = `${millis}밀리초`;
                         }
 
-                        printTime();
-                        setInterval(printTime, 10); 
-                        worldSelect.addEventListener("change", printTime);
-
+                        setInterval(printWorldTime, 10);
+                        worldSelect.addEventListener("change", printWorldTime);
                     </script>
+
+                    <br />
+                    <hr>
+                    <h3 align="center">알람 설정</h3>
                     <div align="center">
-                        <input type="time" id="alarm" class="input"/><br/>
-                        ON <input type="radio" name="onoff" value="1">
-                        OFF <input type="radio" name="onoff" value="0">
+                        <input type="time" id="alarm" class="input" /><br />
+                        ON <input type="radio" name="onoff" value="1" id="alarmOn" />
+                        OFF <input type="radio" name="onoff" value="0" id="alarmOff" checked /><br />
+                        <button onclick="startAlarm()" class="button">설정 완료</button>
+
+                        <script>
+                            let alarmInterval;
+
+                            function startAlarm() {
+                                if (alarmInterval) clearInterval(alarmInterval);
+
+                                let alarmInput = document.getElementById("alarm").value;
+                                let radioOn = document.getElementById("alarmOn");
+
+                                if (radioOn.checked && alarmInput) {
+                                    alert("알람이 설정되었습니다: " + alarmInput);
+
+                                    alarmInterval = setInterval(checkAlarmTime, 1000);
+                                } else if (!radioOn.checked) {
+                                    alert("알람이 꺼져있습니다.");
+                                } else {
+                                    alert("시간을 설정해주세요.");
+                                }
+                            }
+
+                            function checkAlarmTime() {
+                                let alarmInput = document.getElementById("alarm").value;
+                                let radioOn = document.getElementById("alarmOn");
+                                let now = new Date();
+
+                                if (!radioOn.checked) {
+                                    clearInterval(alarmInterval);
+                                    return;
+                                }
+
+                                let targetHour = parseInt(alarmInput.split(":")[0]);
+                                let targetMin = parseInt(alarmInput.split(":")[1]);
+
+                                if (now.getHours() === targetHour &&
+                                    now.getMinutes() === targetMin &&
+                                    now.getSeconds() === 0) {
+
+                                    alert("알람 시간입니다!");
+
+                                    document.getElementById("alarmOff").checked = true;
+                                    clearInterval(alarmInterval);
+                                }
+                            }
+                        </script>
                     </div>
                 </aside>
             </td>

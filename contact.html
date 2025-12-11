@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        img {
+            margin-top: 20px;
+        }
+
+        .img {
+            border-radius: 5%;
+            transition: transform 0.4s, box-shadow 0.4s;
+            z-index: 1;
+        }
+
+        .img:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        .img:active {
+            box-shadow: none;
+            transform: scale(0.9);
+            transition: transform 0s, box-shadow 0s;
+        }
+
+        .text_vertical_left {
+            writing-mode: vertical-rl;
+        }
+
+        .text_vertical_right {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+
+        .text_vertical_down {
+            transform: rotate(180deg);
+        }
+
+        .email_text {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+
+        }
+
+        .email_text:hover {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transform: scale(1.2);
+        }
+
+        .email_text:active {
+            text-shadow: none;
+            transform: scale(0.9);
+            transition: transform 0s, text-shadow 0s;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center">Contact Me!</h1>
+    <br />
+    <div width="80%" align="center">
+        <table width="60%">
+            <tr>
+                <td colspan="3">
+                    <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank">
+                        <h1>[EMAIL]</h1>
+                        <hr />
+                        <h3>n.gyumo13@gmail.com</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="text_vertical_right">
+                    <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank">
+                        <h3>n.gyumo13@gmail.com</h3>
+                    </a>
+                </td>
+                <td align="center" width="auto" height="auto">
+                    <a href="mailto:n.gyumo13@gmail.com" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/960px-Gmail_icon_%282020%29.svg.png"
+                            align="center" width="100%" height="auto" class="img"></a>
+                </td>
+                <td class="text_vertical_left">
+                    <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank">
+                        <h3>n.gyumo13@gmail.com</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text_vertical_down">
+                    <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank">
+                        <h3>n.gyumo13@gmail.com</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="3">
+                    <hr style="border: 2px dotted black" />
+                    <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank">
+                        <h2>EMAIL</h2>
+                        <h3>n.gyumo13@gmail.com</h3>
+                    </a>
+                    <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank"><img src="email.png"
+                            align="center" width="80%" height="auto" class="img"></a>
+                </td>
+            </tr>
+        </table>
+        <br /><br />
+        <table width="60%">
+            <tr>
+                <td colspan="3">
+                    <a href="https://github.com/namgyumo" class="email_text" target="_blank">
+                        <h1>[GITHUB]</h1>
+                    </a>
+                    <hr />
+                    <a href="https://github.com/namgyumo" class="email_text" target="_blank">
+                        <h3>namgyumo</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="text_vertical_right">
+                    <a href="https://github.com/namgyumo" class="email_text" target="_blank">
+                        <h3>namgyumo</h3>
+                    </a>
+                </td>
+                <td align="center" width="auto" height="auto">
+                    <a href="https://github.com/namgyumo" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                            align="center" width="100%" height="auto" class="img github-logo-img">
+                    </a>
+                </td>
+                <td class="text_vertical_left">
+                    <a href="https://github.com/namgyumo" class="email_text" target="_blank">
+                        <h3>namgyumo</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text_vertical_down">
+                    <a href="https://github.com/namgyumo" class="email_text" target="_blank">
+                        <h3>namgyumo</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <hr style="border: 2px dotted black" />
+                    <a href="https://github.com/namgyumo" class="email_text" target="_blank">
+                        <h2>GITHUB</h2>
+                        <h3>namgyumo</h3>
+                    </a>
+                    <a href="https://github.com/namgyumo" class="email_text" target="_blank">
+                        <img src="github.png" align="center" width="80%" height="auto" class="img">
+                    </a>
+            </tr>
+        </table>
+        <br /><br />
+        <table width="60%">
+            <tr>
+                <td colspan="3">
+                    <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
+                        <h1>[INSTAGRAM]</h1>
+                    </a>
+                    <hr />
+                    <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
+                        <h3>east_scale</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="text_vertical_right">
+                    <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
+                        <h3>east_scale</h3>
+                    </a>
+                </td>
+                <td align="center" width="auto" height="auto">
+                    <a href="https://instagram.com/east_scale" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2048px-Instagram_logo_2022.svg.png"
+                            align="center" width="100%" height="auto" class="img github-logo-img">
+                    </a>
+                </td>
+                <td class="text_vertical_left">
+                    <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
+                        <h3>east_scale</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text_vertical_down">
+                    <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
+                        <h3>east_scale</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <hr style="border: 2px dotted black" />
+                    <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
+                        <h2>INSTAGRAM</h2>
+                        <h3>east_scale</h3>
+                    </a>
+                    <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
+                        <img src="instagram.png" align="center" width="80%" height="auto" class="img">
+                    </a>
+            </tr>
+        </table>
+        <br /><br />
+    </div>
+</body>
+
+</html>
