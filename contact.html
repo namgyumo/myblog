@@ -69,7 +69,14 @@
 
         table {
             border-collapse: collapse;
-            border: 1px solid #ddd;
+            border: none
+        }
+        .div{
+            border: 3px solid #ddd;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-radius: 5px;
+            width: 60%;
+            align-self: center;
         }
     </style>
 </head>
@@ -78,12 +85,15 @@
     <h1 align="center">Contact Me!</h1>
     <br />
     <div width="80%" align="center">
-        <table width="60%">
+        <div width="60%"  class="div" align="center">
+            <table>
             <tr>
                 <td colspan="3">
                     <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank">
                         <h1>[EMAIL]</h1>
-                        <hr />
+                    </a>
+                    <hr/>
+                    <a href="mailto:n.gyumo13@gmail.com" class="email_text" target="_blank">
                         <h3>n.gyumo13@gmail.com</h3>
                     </a>
                 </td>
@@ -124,8 +134,12 @@
                 </td>
             </tr>
         </table>
+        <br/>
+        </div>
+        
         <br /><br />
-        <table width="60%">
+        <div width="60%" align="center" class="div">
+            <table>
             <tr>
                 <td colspan="3">
                     <a href="https://github.com/namgyumo" class="email_text" target="_blank">
@@ -174,8 +188,12 @@
                     </a>
             </tr>
         </table>
+        <br/>
+        </div>
+        
         <br /><br />
-        <table width="60%">
+        <div width="60%" align="center" class="div">
+            <table>
             <tr>
                 <td colspan="3">
                     <a href="https://instagram.com/east_scale" class="email_text" target="_blank">
@@ -224,6 +242,9 @@
                     </a>
             </tr>
         </table>
+        <br/>
+        </div>
+        
         <br /><br />
     </div>
 </body>
